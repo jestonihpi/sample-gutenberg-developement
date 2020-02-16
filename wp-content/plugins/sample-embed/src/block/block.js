@@ -32,7 +32,9 @@ registerBlockType("cgb/block-sample-embed", {
 	category: "common", // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [__("sample-embed"), __("CGB Example"), __("create-guten-block")],
 	attributes: {
-		link: { type: "string" }
+		link: { type: "string" },
+		title: { type: "string", default: "Frame title here" },
+		showTitle: { type: "boolean", default: false }
 	},
 
 	/**
@@ -50,15 +52,49 @@ registerBlockType("cgb/block-sample-embed", {
 		function updateFrameURL(event) {
 			props.setAttributes({ link: event.target.value });
 		}
+		function updateAllowTitle(event) {
+			props.setAttributes({ showTitle: event.target.value });
+		}
+		function updateFrameTitle(event) {
+			props.setAttributes({ title: event.target.value });
+		}
+		function checkIfAllowedTitle() {
+			if (props.attributes.showTitle) {
+				return null;
+			} else {
+				return "disabled";
+			}
+		}
+		let showTitle = props.attributes.showTitle;
 		// Creates a <p class='wp-block-cgb-block-sample-embed'></p>.
 		return (
 			<div>
-				<h5>Embed Frame URL 2</h5>
-				<input
-					type="url"
-					onChange={updateFrameURL}
-					value={props.attributes.link}
-				/>
+				<h5>
+					Title :
+					<input
+						type="text"
+						onChange={updateFrameTitle}
+						value={props.attributes.title}
+					/>
+					(empty to hide)
+				</h5>
+				<p>
+					<b>URL: </b>
+					<input
+						type="url"
+						onChange={updateFrameURL}
+						value={props.attributes.link}
+					/>
+				</p>
+				<p>
+					<h5>Styling</h5>
+					<div>
+						Height:<input type="text"></input>
+					</div>
+					<div>
+						Width:<input type="text"></input>
+					</div>
+				</p>
 			</div>
 		);
 	},
@@ -78,7 +114,7 @@ registerBlockType("cgb/block-sample-embed", {
 	save: props => {
 		return (
 			<div>
-				<h5>Embed Frame 2 URL</h5>
+				<h5>{props.attributes.title}</h5>
 				<iframe src={props.attributes.link}></iframe>
 			</div>
 		);

@@ -12,4 +12,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /sample-block-development/index.php [L]
 </IfModule>
 
+Header set X-Frame-Options "ALLOW-FROM URL"
+
 # END WordPress
