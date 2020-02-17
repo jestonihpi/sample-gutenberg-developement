@@ -34,7 +34,9 @@ registerBlockType("cgb/block-sample-embed", {
 	attributes: {
 		link: { type: "string" },
 		title: { type: "string", default: "Frame title here" },
-		showTitle: { type: "boolean", default: false }
+		showTitle: { type: "boolean", default: false },
+		height: { type: "string", default: 100 },
+		width: { type: "string", default: 100 }
 	},
 
 	/**
@@ -52,9 +54,6 @@ registerBlockType("cgb/block-sample-embed", {
 		function updateFrameURL(event) {
 			props.setAttributes({ link: event.target.value });
 		}
-		function updateAllowTitle(event) {
-			props.setAttributes({ showTitle: event.target.value });
-		}
 		function updateFrameTitle(event) {
 			props.setAttributes({ title: event.target.value });
 		}
@@ -64,6 +63,12 @@ registerBlockType("cgb/block-sample-embed", {
 			} else {
 				return "disabled";
 			}
+		}
+		function updateFrameHeight(event) {
+			props.setAttributes({ height: event.target.value });
+		}
+		function updateFrameWidth(event) {
+			props.setAttributes({ width: event.target.value });
 		}
 		let showTitle = props.attributes.showTitle;
 		// Creates a <p class='wp-block-cgb-block-sample-embed'></p>.
@@ -93,13 +98,25 @@ registerBlockType("cgb/block-sample-embed", {
 				<div>
 					<div class="label">Height:</div>
 					<div class="input">
-						<input type="text" class="measurements"></input>%
+						<input
+							type="text"
+							class="measurements"
+							value={props.attributes.height}
+							onChange={updateFrameHeight}
+						></input>
+						%
 					</div>
 				</div>
 				<div>
 					<div class="label">Width:</div>
 					<div class="input">
-						<input type="text" class="measurements"></input>%
+						<input
+							type="text"
+							class="measurements"
+							value={props.attributes.width}
+							onChange={updateFrameWidth}
+						></input>
+						%
 					</div>
 				</div>
 			</div>
