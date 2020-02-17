@@ -68,33 +68,40 @@ registerBlockType("cgb/block-sample-embed", {
 		let showTitle = props.attributes.showTitle;
 		// Creates a <p class='wp-block-cgb-block-sample-embed'></p>.
 		return (
-			<div>
-				<h5>
-					Title :
-					<input
-						type="text"
-						onChange={updateFrameTitle}
-						value={props.attributes.title}
-					/>
-					(empty to hide)
-				</h5>
-				<p>
-					<b>URL: </b>
-					<input
-						type="url"
-						onChange={updateFrameURL}
-						value={props.attributes.link}
-					/>
-				</p>
-				<p>
-					<h5>Styling</h5>
-					<div>
-						Height:<input type="text"></input>
+			<div class="wp-block-cgb-block-sample-embed">
+				<div>
+					<div class="label">Title:</div>
+					<div class="input">
+						<input
+							type="text"
+							onChange={updateFrameTitle}
+							value={props.attributes.title}
+						/>
 					</div>
-					<div>
-						Width:<input type="text"></input>
+					<span class="small">(empty to hide)</span>
+				</div>
+				<div>
+					<div class="label">URL</div>
+					<div class="input">
+						<input
+							type="url"
+							onChange={updateFrameURL}
+							value={props.attributes.link}
+						/>
 					</div>
-				</p>
+				</div>
+				<div>
+					<div class="label">Height:</div>
+					<div class="input">
+						<input type="text" class="measurements"></input>%
+					</div>
+				</div>
+				<div>
+					<div class="label">Width:</div>
+					<div class="input">
+						<input type="text" class="measurements"></input>%
+					</div>
+				</div>
 			</div>
 		);
 	},

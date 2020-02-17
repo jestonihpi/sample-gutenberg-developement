@@ -5,11 +5,26 @@
  * which makes it higher in priority.
  */
 
-.wp-block-cgb-block-sample-embed  {
-  background: $green;
-  border: 0.2rem solid $black;
-  color: $black;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem;
+.wp-block-cgb-block-sample-embed {
+	font-size: 14px;
+	> div {
+		padding: 0.5rem 0rem;
+		.small {
+			font-size: 8px;
+		}
+		.label {
+			width: 30%;
+			display: inline-flex;
+		}
+		.input {
+			width: 70%;
+			display: inline-flex;
+			input {
+				width: 100%;
+				&.measurements {
+					width: 10%;
+				}
+			}
+		}
+	}
 }

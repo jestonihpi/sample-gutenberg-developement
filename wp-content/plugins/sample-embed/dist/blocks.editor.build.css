@@ -11,9 +11,20 @@
  * which makes it higher in priority.
  */
 .wp-block-cgb-block-sample-embed {
-  background: #bada55;
-  border: 0.2rem solid #292929;
-  color: #292929;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem; }
+  font-size: 14px; }
+  .wp-block-cgb-block-sample-embed > div {
+    padding: 0.5rem 0rem; }
+    .wp-block-cgb-block-sample-embed > div .small {
+      font-size: 8px; }
+    .wp-block-cgb-block-sample-embed > div .label {
+      width: 30%;
+      display: -ms-inline-flexbox;
+      display: inline-flex; }
+    .wp-block-cgb-block-sample-embed > div .input {
+      width: 70%;
+      display: -ms-inline-flexbox;
+      display: inline-flex; }
+      .wp-block-cgb-block-sample-embed > div .input input {
+        width: 100%; }
+        .wp-block-cgb-block-sample-embed > div .input input.measurements {
+          width: 10%; }
